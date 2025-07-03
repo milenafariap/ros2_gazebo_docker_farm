@@ -92,12 +92,12 @@ xhost +local:docker
 
 ```bash
 docker run -it --rm \
-  --net=host \
-  --env="DISPLAY=$DISPLAY" \
-  --env="QT_X11_NO_MITSHM=1" \
-  --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-  --volume="$PWD:/root/moray" \
-  --name=ros2_gz \
+  -v ~/ros2_gazebo_docker_farm:/root/moray \
+  -e GZ_SIM_RESOURCE_PATH=/root/moray/moray_assets/sdf_world \
+  -e GAZEBO_MODEL_PATH=/root/moray/moray_assets/models \
+  -e DISPLAY=$DISPLAY \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  --network host \
   ros2_gz_farm
 ```
 
