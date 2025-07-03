@@ -107,7 +107,7 @@ docker run -it --rm \
 
 ```bash
 cd /root/moray
-colcon build --packages-select farm_inspection
+colcon build
 source install/setup.bash
 ros2 launch farm_inspection gazebo_with_bridge.launch.py
 ```
