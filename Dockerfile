@@ -6,14 +6,14 @@ RUN apt update && apt install -y \
     ros-humble-joint-state-publisher-gui \
     && rm -rf /var/lib/apt/lists/*
 
-# Copia os arquivos do robô e mundo para dentro do container
-COPY moray_assets/ /root/moray/
+# Não copie moray_assets — você vai montar como volume depois
 
-# Exporta caminhos para que o Gazebo e ROS encontrem os recursos
+# Variáveis de ambiente
 ENV GZ_SIM_RESOURCE_PATH=/root/moray/sdf_world
 ENV GAZEBO_MODEL_PATH=/root/moray/models
-
-# Seta o ROS 2 Humble como ambiente padrão
 ENV ROS_DISTRO=humble
+
+# Ativa o ROS no bash
 SHELL ["/bin/bash", "-c"]
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
+
