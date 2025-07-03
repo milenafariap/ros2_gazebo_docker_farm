@@ -10,7 +10,7 @@ def generate_launch_description():
     pkg_share = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     
     # Caminho do arquivo SDF
-    sdf_path = os.path.join(pkg_share, 'world', 'forest.sdf')
+    sdf_path = os.path.join(pkg_share, 'world', 'farm_world.sdf')
 
     # Caminho do executável lidar_node
     lidar_node_path = os.path.join(pkg_share, 'scripts', 'build', 'lidar_node')
